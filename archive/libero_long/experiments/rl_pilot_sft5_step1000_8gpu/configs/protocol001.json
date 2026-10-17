@@ -1,0 +1,121 @@
+{
+  "id": "rl_pilot_sft5_step1000_8gpu",
+  "created_utc": "2026-10-11T05:34:53.151355+00:00",
+  "allowed_physical_gpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "sft_checkpoint": "/data/divl-trqam/benchmark/checkpoints/sft/sft5_b128_seed0/step_001000",
+  "sft_checkpoint_manifest_sha256": "10595e73f11aaa25743b6ec8c9c8fdc084447ae0e5060176025ce2dbb2982183",
+  "normalization": "/data/divl-trqam/benchmark/data/sft/batch128/sft05_norm.json",
+  "normalization_sha256": "2df6fa73065c80b4391df8d41a4ec1a2e05e5ae6f7d347a0ee9910d0f8c9766b",
+  "train_manifest": "/data/divl-trqam/benchmark/data/sft/batch128/sft05_manifest.json",
+  "train_manifest_sha256": "41014721ac02cbacedbb49413027715e3fa58cc74f1e4397cddb5ae4d18282c7",
+  "prediction_horizon": 10,
+  "real_action_dim": 7,
+  "padded_action_dim": 32,
+  "proprio_dim": 8,
+  "execute_prefix": 5,
+  "flow_inference_steps": 10,
+  "precision": "FP32 highest",
+  "gamma": 0.99,
+  "replay_max_steps": 520,
+  "replay_environment_seed": 20261010,
+  "replay_noise_seed": 20261010,
+  "replay_first_episodes": 300,
+  "replay_automatic_expansion": false,
+  "replay_expansion_rule": "First300 only; no600 without independent audited deficiency and newly frozen preregistration before collecting",
+  "native_source_files_sha256": [
+    "2df2dba6ab3af1c125e17e9c3c3fc5906c15a3c3b5f53e2aa65588c9ce020d38",
+    "0bca587f661d0cd238941af0f1638ac519167b6299e16244d81559dc1c3be3b5",
+    "820199c9b32da4ba12f22b161c8a3afdd2d234c38dab8926f37fbcd8465fd99c",
+    "1311ccd7566271dd5cf91d9eacdd61bcdd74fd0fa91608c901eda98758de3b06",
+    "9986df69e6eaaf1f753bc8722b96907fbfe940da90c3e84ad60c29ad7f305317",
+    "e64324fc5d7a64fbe8f75def79411c68fe23f5a5b234a2913f334a701d3534f4",
+    "52f8e9dabc0d49c9e8f42fb8e306bcfe7bb746b61007e8b88f19ed54629f4b18",
+    "af5dae9483fc711cd30d8918ee5ab783b8a139d66a309f49fea15d3f1e0e37e8",
+    "f491fb9554e2ad5558c07d97da402dddc3378ccf1185ee335c979e35d8a6c179",
+    "5c20fe9512dabe3165ae49d2e3ec1eb3d32a33bb7b139474602c5221fd4d5678"
+  ],
+  "critic_budget_updates": 2000,
+  "critic_batch_candidates": [
+    128
+  ],
+  "critic_primary_batch_preference": 128,
+  "critic_learning_rate": 0.0002,
+  "critic_schedule": "cosine2000",
+  "target_new_weight": 0.005,
+  "scalar_expectile": 0.6,
+  "divl": {
+    "bins": 201,
+    "support": [
+      -0.1,
+      1.1
+    ],
+    "tau_base": 0.6,
+    "entropy_alpha": 0.3,
+    "tau_clip": [
+      0.0,
+      1.0
+    ]
+  },
+  "actor_first_budget_updates": 100,
+  "actor_checkpoints": [
+    0,
+    100
+  ],
+  "actor_no_automatic_expansion": true,
+  "actor_batch_candidates": [
+    32,
+    16
+  ],
+  "actor_batch_preference": 32,
+  "seed": 20261010,
+  "critic_input": "planned issuedH5 normalize7; terminalunexecutedtail explicitly notenvironmentexecuted; actualk usedTD; sameallarms",
+  "bc_labels": "real actuallyexecuted H10 acrosschunk boundaries; full-window eligibilitymask; no predictedfuturelabel",
+  "bc_sampling_rule": {
+    "task_balanced": true,
+    "expert_fraction": 0.5,
+    "expert_scope": "onlyselectedlegalTrain50",
+    "rollout_scope": "onlynative-successful audited rollout andfullH10",
+    "no_success_task_fallback": "legalTrainexpert task only",
+    "same_B_E_F": true,
+    "reward_weighting": false
+  },
+  "bc_loss": "nativeordinary full32 FlowMatching (zero paddedunusedcoords); fullvalidactual10only",
+  "physics_ranking": "N/A untilsame-state controlledbranch/historyreturn gates actuallypass; no timestepmatching/no fakeexpertpairs",
+  "weak_critic_rule": "atmost100engineeringactorupdates, no250/500 automatic; no physicalrank doesnotprovequality",
+  "serious_degradation_stop_pp": 10,
+  "nan_wronggradient_oldJIT_orbadTRQAM_stop": true,
+  "evaluation": "originalofficialstandard50reuseddevelopment; fixed500identicalsource/envnoise conditions; Aconditionaloriginal500reuse",
+  "original_evaluation_protocol_sha256": "1dfa0978695f3e6b3947b41cdd961ffc423a173b8528dead796dd4c800afd510",
+  "no_existing_sft_resume": true,
+  "critic_checkpoints": [
+    250,
+    500,
+    1000,
+    2000
+  ],
+  "previous_experiment": "/data/divl-trqam/benchmark/experiments/rl_pilot_sft5_step1000_2gpu",
+  "migration": "8GPU scheduling, CriticB128; native math/replay/SFT/actoroptimizers unchanged",
+  "bounded_profiles": {
+    "critic_new_layout_candidates_max": 1,
+    "actor_devices": [
+      2,
+      4
+    ],
+    "actor_batches": [
+      32,
+      16
+    ],
+    "engineering_critic": "Public initialization only for disposable actor profile/gate; never scientific actor update"
+  },
+  "counterfactual_diagnostic_budget": 0,
+  "counterfactual_reason": "Contact/controller-history exact restoration not admitted; real action-ranking/gradient return remain N/A"
+}

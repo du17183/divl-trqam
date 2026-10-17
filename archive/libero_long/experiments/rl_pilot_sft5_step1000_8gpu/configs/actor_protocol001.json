@@ -1,0 +1,56 @@
+{
+  "created_utc": "2026-10-10T15:04:54.580749+00:00",
+  "learning_rate": 2e-05,
+  "optimizer": "AdamW",
+  "schedule": "cosine100",
+  "adam_betas": [
+    0.9,
+    0.999
+  ],
+  "weight_decay": 0.01,
+  "max_grad_norm": 1.0,
+  "precision": "FP32 compute and masters",
+  "all_pi05_parameters_trainable": true,
+  "training_seed": 20261010,
+  "budget_updates": 100,
+  "checkpoints": [
+    0,
+    100
+  ],
+  "no_automatic_250_500": true,
+  "bc_coefficient_E_F": 1.0,
+  "beta_bc_reward_weighting": false,
+  "B_ema_reference_new_weight": 0.005,
+  "C_D_E_F_reference": "fixed SFT1000",
+  "qam": {
+    "flow_steps": 10,
+    "epsilon": 0.1,
+    "temperature": 2.0,
+    "critic_horizon": 5,
+    "real_action_dim": 7,
+    "action_clip": null
+  },
+  "trqam": {
+    "official_commit": "8775edfd019fe02d7468153af09700f633a61ab0",
+    "solver_steps": 10,
+    "terminal_temperature": 1.0,
+    "lambda_initial": 1.0,
+    "lambda_scale": 3.0,
+    "lambda_range": [
+      0.01,
+      100.0
+    ],
+    "dual_learning_rate": 0.01,
+    "kl_budget": 1.0,
+    "kl_ema_rho": 0.1,
+    "kl_estimate_clip": 2.0,
+    "beta_reference_new_weight": 0.005,
+    "kl_logged_raw": true,
+    "horizon_divisor": 10,
+    "strict_continuous_KL_guarantee": false,
+    "scope": "official discrete solver/AM/path-KL/dual formulas ported to pretrained VLA; minDoubleQ/fixedIQLcritic/separate optimizers are explicit adaptations"
+  },
+  "selection": "prefer batch32 if measured common throughput >=90% of maximum; otherwise highest common admitted layout. Same chosen configuration all admitted methods. Full FP32 equivalence abs2e-5 unchanged; no BF16 or gradient-accumulation shortcut",
+  "physical_gradient_validated": false,
+  "pilot_scope": "one RL training seed; max100 engineering only with no valid physical action pairs"
+}

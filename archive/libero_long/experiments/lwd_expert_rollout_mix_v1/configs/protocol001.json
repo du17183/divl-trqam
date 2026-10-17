@@ -1,0 +1,486 @@
+{
+  "id": "lwd_expert_rollout_mix_v1",
+  "authority_sha256": "8e5ae1dd9f4c0d59f2ee94d06e933899c570398ee1abf018185389471d71a55e",
+  "supersedes_fixed_25_75_authority_sha256": "336e787157c4154fabc26e5e371e84b3085b9a0807e2222e7b6e05a0d4d982a9",
+  "inherited": {
+    "id": "rl_pilot_sft5_step1000_8gpu",
+    "created_utc": "2026-10-11T05:34:53.151355+00:00",
+    "allowed_physical_gpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "allowed_physical_gpu_uuid": {
+      "0": "GPU-61d5a7f4-a264-add3-c229-7ee5cee48c8e",
+      "1": "GPU-db872a73-0d5b-3601-fc9f-d4f3af7f7e24",
+      "2": "GPU-b7db119b-3ff7-b127-1207-839bc5d511eb",
+      "3": "GPU-cc0546c6-2fdb-c8c9-65bc-851968a4ad18",
+      "4": "GPU-79169b6e-4076-f210-bca5-b34263eb18cf",
+      "5": "GPU-f2118bce-ebc8-4206-2c90-ecfc43b8a4d8",
+      "6": "GPU-b5c1bae6-5b9c-4e66-4ad2-bbfc23bc8439",
+      "7": "GPU-c8195369-fd24-05c6-6727-67e2c68a1881"
+    },
+    "sft_checkpoint": "/data/divl-trqam/benchmark/checkpoints/sft/sft5_b128_seed0/step_001000",
+    "sft_checkpoint_manifest_sha256": "10595e73f11aaa25743b6ec8c9c8fdc084447ae0e5060176025ce2dbb2982183",
+    "normalization": "/data/divl-trqam/benchmark/data/sft/batch128/sft05_norm.json",
+    "normalization_sha256": "2df6fa73065c80b4391df8d41a4ec1a2e05e5ae6f7d347a0ee9910d0f8c9766b",
+    "train_manifest": "/data/divl-trqam/benchmark/data/sft/batch128/sft05_manifest.json",
+    "train_manifest_sha256": "41014721ac02cbacedbb49413027715e3fa58cc74f1e4397cddb5ae4d18282c7",
+    "prediction_horizon": 10,
+    "real_action_dim": 7,
+    "padded_action_dim": 32,
+    "proprio_dim": 8,
+    "execute_prefix": 5,
+    "flow_inference_steps": 10,
+    "precision": "FP32 highest",
+    "gamma": 0.99,
+    "replay_max_steps": 520,
+    "replay_environment_seed": 20261010,
+    "replay_noise_seed": 20261010,
+    "replay_first_episodes": 300,
+    "replay_automatic_expansion": false,
+    "replay_expansion_rule": "First300 only; no600 without independent audited deficiency and newly frozen preregistration before collecting",
+    "native_source_files_sha256": [
+      "2df2dba6ab3af1c125e17e9c3c3fc5906c15a3c3b5f53e2aa65588c9ce020d38",
+      "0bca587f661d0cd238941af0f1638ac519167b6299e16244d81559dc1c3be3b5",
+      "820199c9b32da4ba12f22b161c8a3afdd2d234c38dab8926f37fbcd8465fd99c",
+      "1311ccd7566271dd5cf91d9eacdd61bcdd74fd0fa91608c901eda98758de3b06",
+      "9986df69e6eaaf1f753bc8722b96907fbfe940da90c3e84ad60c29ad7f305317",
+      "e64324fc5d7a64fbe8f75def79411c68fe23f5a5b234a2913f334a701d3534f4",
+      "52f8e9dabc0d49c9e8f42fb8e306bcfe7bb746b61007e8b88f19ed54629f4b18",
+      "af5dae9483fc711cd30d8918ee5ab783b8a139d66a309f49fea15d3f1e0e37e8",
+      "f491fb9554e2ad5558c07d97da402dddc3378ccf1185ee335c979e35d8a6c179",
+      "5c20fe9512dabe3165ae49d2e3ec1eb3d32a33bb7b139474602c5221fd4d5678"
+    ],
+    "critic_budget_updates": 2000,
+    "critic_batch_candidates": [
+      128
+    ],
+    "critic_primary_batch_preference": 128,
+    "critic_learning_rate": 0.0002,
+    "critic_schedule": "cosine2000",
+    "target_new_weight": 0.005,
+    "scalar_expectile": 0.6,
+    "divl": {
+      "bins": 201,
+      "support": [
+        -0.1,
+        1.1
+      ],
+      "tau_base": 0.6,
+      "entropy_alpha": 0.3,
+      "tau_clip": [
+        0.0,
+        1.0
+      ]
+    },
+    "actor_first_budget_updates": 100,
+    "actor_checkpoints": [
+      0,
+      100
+    ],
+    "actor_no_automatic_expansion": true,
+    "actor_batch_candidates": [
+      32,
+      16
+    ],
+    "actor_batch_preference": 32,
+    "seed": 20261010,
+    "critic_input": "planned issuedH5 normalize7; terminalunexecutedtail explicitly notenvironmentexecuted; actualk usedTD; sameallarms",
+    "bc_labels": "real actuallyexecuted H10 acrosschunk boundaries; full-window eligibilitymask; no predictedfuturelabel",
+    "bc_sampling_rule": {
+      "task_balanced": true,
+      "expert_fraction": 0.5,
+      "expert_scope": "onlyselectedlegalTrain50",
+      "rollout_scope": "onlynative-successful audited rollout andfullH10",
+      "no_success_task_fallback": "legalTrainexpert task only",
+      "same_B_E_F": true,
+      "reward_weighting": false
+    },
+    "bc_loss": "nativeordinary full32 FlowMatching (zero paddedunusedcoords); fullvalidactual10only",
+    "physics_ranking": "N/A untilsame-state controlledbranch/historyreturn gates actuallypass; no timestepmatching/no fakeexpertpairs",
+    "weak_critic_rule": "atmost100engineeringactorupdates, no250/500 automatic; no physicalrank doesnotprovequality",
+    "serious_degradation_stop_pp": 10,
+    "nan_wronggradient_oldJIT_orbadTRQAM_stop": true,
+    "evaluation": "originalofficialstandard50reuseddevelopment; fixed500identicalsource/envnoise conditions; Aconditionaloriginal500reuse",
+    "original_evaluation_protocol_sha256": "1dfa0978695f3e6b3947b41cdd961ffc423a173b8528dead796dd4c800afd510",
+    "no_existing_sft_resume": true,
+    "critic_checkpoints": [
+      250,
+      500,
+      1000,
+      2000
+    ],
+    "previous_experiment": "/data/divl-trqam/benchmark/experiments/rl_pilot_sft5_step1000_2gpu",
+    "migration": "8GPU scheduling, CriticB128; native math/replay/SFT/actoroptimizers unchanged",
+    "bounded_profiles": {
+      "critic_new_layout_candidates_max": 1,
+      "actor_devices": [
+        2,
+        4
+      ],
+      "actor_batches": [
+        32,
+        16
+      ],
+      "engineering_critic": "Public initialization only for disposable actor profile/gate; never scientific actor update"
+    },
+    "counterfactual_diagnostic_budget": 0,
+    "counterfactual_reason": "Contact/controller-history exact restoration not admitted; real action-ranking/gradient return remain N/A"
+  },
+  "actor_inherited": {
+    "created_utc": "2026-10-10T15:04:54.580749+00:00",
+    "learning_rate": 2e-05,
+    "optimizer": "AdamW",
+    "schedule": "cosine100",
+    "adam_betas": [
+      0.9,
+      0.999
+    ],
+    "weight_decay": 0.01,
+    "max_grad_norm": 1.0,
+    "precision": "FP32 compute and masters",
+    "all_pi05_parameters_trainable": true,
+    "training_seed": 20261010,
+    "budget_updates": 100,
+    "checkpoints": [
+      0,
+      100
+    ],
+    "no_automatic_250_500": true,
+    "bc_coefficient_E_F": 1.0,
+    "beta_bc_reward_weighting": false,
+    "B_ema_reference_new_weight": 0.005,
+    "C_D_E_F_reference": "fixed SFT1000",
+    "qam": {
+      "flow_steps": 10,
+      "epsilon": 0.1,
+      "temperature": 2.0,
+      "critic_horizon": 5,
+      "real_action_dim": 7,
+      "action_clip": null
+    },
+    "trqam": {
+      "official_commit": "8775edfd019fe02d7468153af09700f633a61ab0",
+      "solver_steps": 10,
+      "terminal_temperature": 1.0,
+      "lambda_initial": 1.0,
+      "lambda_scale": 3.0,
+      "lambda_range": [
+        0.01,
+        100.0
+      ],
+      "dual_learning_rate": 0.01,
+      "kl_budget": 1.0,
+      "kl_ema_rho": 0.1,
+      "kl_estimate_clip": 2.0,
+      "beta_reference_new_weight": 0.005,
+      "kl_logged_raw": true,
+      "horizon_divisor": 10,
+      "strict_continuous_KL_guarantee": false,
+      "scope": "official discrete solver/AM/path-KL/dual formulas ported to pretrained VLA; minDoubleQ/fixedIQLcritic/separate optimizers are explicit adaptations"
+    },
+    "selection": "prefer batch32 if measured common throughput >=90% of maximum; otherwise highest common admitted layout. Same chosen configuration all admitted methods. Full FP32 equivalence abs2e-5 unchanged; no BF16 or gradient-accumulation shortcut",
+    "physical_gradient_validated": false,
+    "pilot_scope": "one RL training seed; max100 engineering only with no valid physical action pairs"
+  },
+  "main_data": {
+    "expert_trajectories": 50,
+    "train_rollout_trajectories": 240,
+    "success_rollout": 109,
+    "failed_rollout": 131,
+    "heldout_rollout_excluded": 60,
+    "total": 290,
+    "source_quota": null,
+    "reward_weighting": false,
+    "sampler": "original task-balanced -> trajectory uniform within task -> chunk uniform within trajectory",
+    "actual_sampling_log_required": true
+  },
+  "bc_data": {
+    "expert": 50,
+    "successful_train_rollout": 109,
+    "expert_probability": 0.5,
+    "full_real_H10_only": true,
+    "failed_rollout_labels": false
+  },
+  "critic": {
+    "updates": 2000,
+    "checkpoints": [
+      250,
+      500,
+      1000,
+      2000
+    ],
+    "batch": 128,
+    "devices": 4,
+    "new_initialization_same_as_original": true
+  },
+  "actor_runs": [
+    {
+      "id": "C-Mix100",
+      "method": "C",
+      "data": "R3",
+      "scheduler": "cosine100",
+      "updates": 100,
+      "checkpoints": [
+        100
+      ],
+      "episodes": 500
+    },
+    {
+      "id": "D-Mix100",
+      "method": "D",
+      "data": "R3",
+      "scheduler": "cosine100",
+      "updates": 100,
+      "checkpoints": [
+        100
+      ],
+      "episodes": 500
+    },
+    {
+      "id": "E-Mix100",
+      "method": "E",
+      "data": "R3",
+      "scheduler": "cosine100",
+      "updates": 100,
+      "checkpoints": [
+        100
+      ],
+      "episodes": 500
+    },
+    {
+      "id": "F-Mix100",
+      "method": "F",
+      "data": "R3",
+      "scheduler": "cosine100",
+      "updates": 100,
+      "checkpoints": [
+        100
+      ],
+      "episodes": 500
+    },
+    {
+      "id": "G-Mix100",
+      "method": "G",
+      "data": "R3",
+      "scheduler": "cosine100",
+      "updates": 100,
+      "checkpoints": [
+        100
+      ],
+      "episodes": 500
+    },
+    {
+      "id": "H-Mix100",
+      "method": "H",
+      "data": "R3",
+      "scheduler": "cosine100",
+      "updates": 100,
+      "checkpoints": [
+        100
+      ],
+      "episodes": 500
+    },
+    {
+      "id": "C-R0-Cosine500",
+      "method": "C",
+      "data": "R0",
+      "scheduler": "cosine500",
+      "updates": 500,
+      "checkpoints": [
+        100,
+        250,
+        500
+      ],
+      "episodes": 1500
+    },
+    {
+      "id": "D-R0-Cosine500",
+      "method": "D",
+      "data": "R0",
+      "scheduler": "cosine500",
+      "updates": 500,
+      "checkpoints": [
+        100,
+        250,
+        500
+      ],
+      "episodes": 1500
+    },
+    {
+      "id": "E-R0-Cosine500",
+      "method": "E",
+      "data": "R0",
+      "scheduler": "cosine500",
+      "updates": 500,
+      "checkpoints": [
+        100,
+        250,
+        500
+      ],
+      "episodes": 1500
+    },
+    {
+      "id": "F-R0-Cosine500",
+      "method": "F",
+      "data": "R0",
+      "scheduler": "cosine500",
+      "updates": 500,
+      "checkpoints": [
+        100,
+        250,
+        500
+      ],
+      "episodes": 1500
+    },
+    {
+      "id": "G-R0-Cosine500",
+      "method": "G",
+      "data": "R0",
+      "scheduler": "cosine500",
+      "updates": 500,
+      "checkpoints": [
+        100,
+        250,
+        500
+      ],
+      "episodes": 1500
+    },
+    {
+      "id": "H-R0-Cosine500",
+      "method": "H",
+      "data": "R0",
+      "scheduler": "cosine500",
+      "updates": 500,
+      "checkpoints": [
+        100,
+        250,
+        500
+      ],
+      "episodes": 1500
+    },
+    {
+      "id": "C-R3-Cosine500",
+      "method": "C",
+      "data": "R3",
+      "scheduler": "cosine500",
+      "updates": 500,
+      "checkpoints": [
+        100,
+        250,
+        500
+      ],
+      "episodes": 1500
+    },
+    {
+      "id": "D-R3-Cosine500",
+      "method": "D",
+      "data": "R3",
+      "scheduler": "cosine500",
+      "updates": 500,
+      "checkpoints": [
+        100,
+        250,
+        500
+      ],
+      "episodes": 1500
+    },
+    {
+      "id": "E-R3-Cosine500",
+      "method": "E",
+      "data": "R3",
+      "scheduler": "cosine500",
+      "updates": 500,
+      "checkpoints": [
+        100,
+        250,
+        500
+      ],
+      "episodes": 1500
+    },
+    {
+      "id": "F-R3-Cosine500",
+      "method": "F",
+      "data": "R3",
+      "scheduler": "cosine500",
+      "updates": 500,
+      "checkpoints": [
+        100,
+        250,
+        500
+      ],
+      "episodes": 1500
+    },
+    {
+      "id": "G-R3-Cosine500",
+      "method": "G",
+      "data": "R3",
+      "scheduler": "cosine500",
+      "updates": 500,
+      "checkpoints": [
+        100,
+        250,
+        500
+      ],
+      "episodes": 1500
+    },
+    {
+      "id": "H-R3-Cosine500",
+      "method": "H",
+      "data": "R3",
+      "scheduler": "cosine500",
+      "updates": 500,
+      "checkpoints": [
+        100,
+        250,
+        500
+      ],
+      "episodes": 1500
+    },
+    {
+      "id": "BC-Cosine500",
+      "method": "B",
+      "data": "BC",
+      "scheduler": "cosine500",
+      "updates": 500,
+      "checkpoints": [
+        100,
+        250,
+        500
+      ],
+      "ema_checkpoints": [
+        100,
+        250,
+        500
+      ],
+      "episodes": 3000
+    }
+  ],
+  "total_main_actor_updates": 7100,
+  "total_beta_updates": 2200,
+  "new_critic_updates": 4000,
+  "total_evaluation_episodes": 24000,
+  "precision": "FP32",
+  "training_seed": 20261010,
+  "inference_evaluation_protocol_sha256": "1dfa0978695f3e6b3947b41cdd961ffc423a173b8528dead796dd4c800afd510",
+  "development_benchmark": true,
+  "new_physical_branch_budget": 0,
+  "first_round_report_barrier": true,
+  "same_configuration_restore_absolute_tolerance": 2e-05,
+  "do_not_signal_other_processes": true,
+  "performance_directory": "performance2",
+  "negative_success_rate_does_not_stop_budget": true,
+  "stop_on": [
+    "invalid expert transitions",
+    "NaN/Inf",
+    "corrupt checkpoint",
+    "identity mismatch",
+    "failed numerical restore"
+  ]
+}

@@ -1,0 +1,36 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.ssh/
+# Runtime and model artifacts
+.venv*/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+.cache/
+checkpoints/
+weights/
+datasets/
+data/
+logs/
+wandb/
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.npy
+*.npz
+*.h5
+*.hdf5
+*.mp4
+*.tar
+*.tar.gz
+*.zip

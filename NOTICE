@@ -1,0 +1,12 @@
+DIVL + TRQAM for LIBERO-Long
+
+Includes OpenPI-derived code under the Apache License 2.0 (LICENSE).
+OpenPI: https://github.com/Physical-Intelligence/openpi
+
+TRQAM path solver, adjoint loss and dual update are adapted from
+https://github.com/yonghdong/trqam at commit
+8775edfd019fe02d7468153af09700f633a61ab0, under the MIT License.
+The original MIT notice is retained in licenses/TRQAM-MIT.txt.
+
+Gemma-related terms are retained in LICENSE_GEMMA.txt.
+Model weights and datasets are not distributed by this repository.
