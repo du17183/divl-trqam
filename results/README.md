@@ -16,3 +16,14 @@ Each row summarizes 50 episodes. `mean_return` uses the undiscounted binary term
 `mean_episode_length` averages all episodes, including failures. No raw episodes or trajectories are included.
 Percentages, returns and lengths are formatted to 1, 3 and 2 decimal places, respectively.
 See the root README for settings, paired confidence intervals and interpretation limits.
+
+## Diagnostic evidence for the README analysis
+
+- [`critic_validation_summary.csv`](critic_validation_summary.csv): four Scalar/DIVL × R0/R3 aggregate rows,
+  including same-state/near-ID ranking, Spearman and positive-gradient-minus-random observed-return intervals.
+  Ranking columns are fractions; return differences are return units, not percentage points.
+- [`trqam_optimizer_summary.csv`](trqam_optimizer_summary.csv): six G/H run summaries derived from accepted
+  update records, including applied/clipped update counts and post-update effective-lambda floor counts.
+  The logged post-update lambda is distinct from the previous lambda used to compute that step.
+
+These summaries contain no raw episodes or per-update logs. Proposed experiments in the README have not been run.
